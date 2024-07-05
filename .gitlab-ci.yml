@@ -92,7 +92,7 @@ smoketestxd:
     - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME
     - cp -r .. $CI_PROJECT_DIR
   after_script:
-    - if grep -q "TrueWarning" playwright-report/test-results/*; then  
+    - if grep -q "TrueWarning" $(pwd)/.gitlab-ci.log; then  
         echo "isWarning=true" >> variables.env
       else
         echo "isWarning=false" >> variables.env
