@@ -1,0 +1,31 @@
+{
+  "name": "automation-tests",
+  "version": "1.0.0",
+  "description": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:smoke:xd": "playwright test --project=Smoke_XD --workers=1",
+    "test:e2e": "playwright test --config=e2e.config.ts --project=E2E_CI",
+    "test:admin": "playwright test --project=admin",
+    "update-snapshots": "playwright test --update-snapshots  --project=E2E_CI",
+    "clonegame": "node clonegame.js",
+    "sendresult": "node pushResults.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git3.nexdev.net:l1/ui-automation-tests/automation-tests.git"
+  },
+  "author": "pentagon@luminet.com",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "google-spreadsheet": "^4.1.1",
+    "prettier": "^3.2.5",
+    "sc-automation-core": "1.43.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.44.0",
+    "notepack.io": "^3.0.1",
+    "tslib": "2.4.1"
+  }
+}
