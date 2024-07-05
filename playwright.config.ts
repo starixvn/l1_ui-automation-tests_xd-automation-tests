@@ -1,6 +1,6 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
 import { devices } from "@playwright/test";
-const testMatch = `${process.env.npm_config_gameid}-*`;
+const testMatch = `${process.env.npm_config_gameid}*`;
 const admin = `${process.env.npm_config_admin}`;
 
 const config: PlaywrightTestConfig = {
