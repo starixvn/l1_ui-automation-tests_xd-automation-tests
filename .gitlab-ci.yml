@@ -92,7 +92,7 @@ smoketestxd:
     - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME
     - cp -r .. $CI_PROJECT_DIR
   after_script:
-    - if grep -q "TrueWarning" $(pwd)/.[MASKED].log; then echo "isWarning=true" >> variables.env; echo $isWarning; else echo "isWarning=false" >> variables.env; echo $isWarning; fi
+    - if grep -q "TrueWarning" $CI_JOB_LOG_FILE; then echo "isWarning=true" >> variables.env; echo $isWarning; else echo "isWarning=false" >> variables.env; echo $isWarning; fi
     - echo $isWarning
   retry: 1
   rules:
