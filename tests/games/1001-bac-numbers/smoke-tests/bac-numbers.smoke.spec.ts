@@ -18,6 +18,15 @@ class BacNumbersSmokeSpec extends SmokeBases.NumberGameBase {
     super(smokeOptions);
   }
 
+  protected logWaning(): void {
+    console.log("TrueWarning"); 
+  }
+
+  protected runScenario(): void {
+    this.logWaning()
+  }
+
+  
 }
 
 new BacNumbersSmokeSpec().start();
