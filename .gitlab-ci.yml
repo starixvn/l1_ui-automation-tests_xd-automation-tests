@@ -40,7 +40,7 @@ e2etest:
   script:
     - cd /app/tests
     - npm run test:e2e --env=$ENV --gameid=$GAMEID --project=$STACK_NAME --jackpot=$jackpot
-
+    - cp -r .. $CI_PROJECT_DIR
   retry: 1
   rules:
     - if: $MODE == "E2E"
@@ -66,6 +66,7 @@ e2etestmac:
   after_script:
     - echo "$CI_JOB_ID"
     - npm run sendresult --env=$ENV --gameid=$GAMEID --pipelineid=$CI_JOB_ID
+    - cp -r .. $CI_PROJECT_DIR
   retry: 1
   rules:
     - if: $TRIGGER == "true" && $MODE == "E2E1"
@@ -88,6 +89,7 @@ smoketestxd:
   script:
     - cd /app/tests
     - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME
+    - cp -r .. $CI_PROJECT_DIR
 
   retry: 1
   rules:
