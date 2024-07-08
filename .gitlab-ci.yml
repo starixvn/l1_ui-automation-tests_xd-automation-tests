@@ -107,7 +107,7 @@ smoketestxd:
       - screenshots
       - test-results
     reports:
-      isWarning: deploy.env   
+      deploy: deploy.env   
     when: always
     expire_in: 1 day
   environment:
