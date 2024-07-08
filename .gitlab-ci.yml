@@ -93,7 +93,7 @@ smoketestxd:
     - cp -r .. $CI_PROJECT_DIR
   after_script:
     - sleep 5
-    - if grep -q "TrueWarning" ; then echo "isWarning=true">> isWarning.env;  else echo "isWarning=false" >> isWarning.env; fi
+    - if grep -q "TrueWarning" ; then isWarning="true">> isWarning.env;  else  isWarning="false" >> isWarning.env; fi
     - echo $isWarning
   retry: 1
   rules:
@@ -106,9 +106,10 @@ smoketestxd:
       - playwright-report
       - screenshots
       - test-results
-      - isWarning.env
+    reports:
+      isWarning: isWarning.env   
     when: always
     expire_in: 1 day
   environment:
       name: isWarning
-      isWarning: $isWarning                                             # and set the variable produced in script to `environment:url`
+      warning: $isWarning                                             # and set the variable produced in script to `environment:url`
