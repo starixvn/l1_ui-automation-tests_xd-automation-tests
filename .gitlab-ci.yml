@@ -65,4 +65,3 @@ smoketestxd:
   environment:
     name: smoketestxd/$CI_COMMIT_REF_SLUG
     url: $DYNAMIC_ENVIRONMENT_URL                                              # and set the variable produced in script to `environment:url`
-    on_stop: stop_review
