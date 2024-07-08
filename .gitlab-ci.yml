@@ -63,4 +63,3 @@ smoketestxd:
     expire_in: 1 day
   environment:
       name: smoketestxd/$CI_COMMIT_REF_SLUG
-      isWarning: $isWarning                                             # and set the variable produced in script to `environment:url`
