@@ -45,7 +45,6 @@ smoketestxd:
     - sleep 5
     - DYNAMIC_ENVIRONMENT_URL=$(deploy-script)                                 # In script, get the environment URL.
     - echo "DYNAMIC_ENVIRONMENT_URL=$DYNAMIC_ENVIRONMENT_URL" >> deploy.env
-    - echo $DYNAMIC_ENVIRONMENT_URL
   retry: 1
   rules:
     - if: $TRIGGER == "true" && $MODE == "SMOKEXD"
