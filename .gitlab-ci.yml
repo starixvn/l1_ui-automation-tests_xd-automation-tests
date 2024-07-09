@@ -43,7 +43,13 @@ smoketestxd:
     - cp -r .. $CI_PROJECT_DIR
   after_script:
     - sleep 5
-    - cat $STACK_NAME.txt | grep -i "TrueWarning" && export WARNING=true || export WARNING=false
+    - if [ -f "test-results/Warning.txt" ]; then
+      echo "Warning.txt found"
+      export Warning=true
+    else
+      echo "Warning.txt not found"
+      export Warning=false
+    fi    
     - echo $WARNING
   retry: 1
   rules:

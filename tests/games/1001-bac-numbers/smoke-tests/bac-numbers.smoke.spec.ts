@@ -1,6 +1,6 @@
 import { BacNumbersLocators } from "../bac-numbers-locators";
 import { BacNumbersConfigs } from "../bac-numbers-configs";
-import { SmokeBases} from "sc-automation-core";
+import { SmokeBases, Components} from "sc-automation-core";
 
 class BacNumbersSmokeSpec extends SmokeBases.NumberGameBase {
   /**
@@ -24,6 +24,7 @@ class BacNumbersSmokeSpec extends SmokeBases.NumberGameBase {
 
   protected runScenario(): void {
     this.logWaning()
+    super.runScenario();
   }
 
   
