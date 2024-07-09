@@ -43,8 +43,8 @@ smoketestxd:
     - cp -r .. $CI_PROJECT_DIR
   after_script:
     - sleep 5
-    - DYNAMIC_ENVIRONMENT_URL=$(deploy-script)                                 # In script, get the environment URL.
-    - echo "DYNAMIC_ENVIRONMENT_URL=$DYNAMIC_ENVIRONMENT_URL" >> deploy.env
+    - echo $CI_JOB_CONSOLE_LOG | grep -i "warning" && export WARNING=true || export WARNING=false
+    - echo $WARNING
   retry: 1
   rules:
     - if: $TRIGGER == "true" && $MODE == "SMOKEXD"
@@ -56,11 +56,6 @@ smoketestxd:
       - playwright-report
       - screenshots
       - test-results
-    reports:
-      dotenv: deploy.env      
  
     when: always
-    expire_in: 1 day
-  environment:
-    name: smoketestxd/$CI_COMMIT_REF_SLUG
-    url: $DYNAMIC_ENVIRONMENT_URL                                              # and set the variable produced in script to `environment:url`
+    expire_in: 1 day                                         # and set the variable produced in script to `environment:url`
