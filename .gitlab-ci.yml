@@ -43,7 +43,7 @@ smoketestxd:
     - cp -r .. $CI_PROJECT_DIR
   after_script:
     - sleep 5
-    - echo $CI_JOB_CONSOLE_LOG | grep -i "warning" && export WARNING=true || export WARNING=false
+    - echo $CI_JOB_CONSOLE_LOG | grep -i "TrueWarning" && export WARNING=true || export WARNING=false
     - echo $WARNING
   retry: 1
   rules:
