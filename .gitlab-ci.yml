@@ -39,11 +39,11 @@ smoketestxd:
     - auto-test-prod
   script:
     - cd /app/tests
-    - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME> $CI_JOB_NAME.txt 2>&1
+    - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME> $STACK_NAME.txt 2>&1
     - cp -r .. $CI_PROJECT_DIR
   after_script:
     - sleep 5
-    - cat $CI_JOB_NAME.txt | grep -i "TrueWarning" && export WARNING=true || export WARNING=false
+    - cat $STACK_NAME.txt | grep -i "TrueWarning" && export WARNING=true || export WARNING=false
     - echo $WARNING
   retry: 1
   rules:
