@@ -53,9 +53,7 @@ smoketestxd:
 
   artifacts:
     paths:
-      - playwright-report
-      - screenshots
-      - test-results
+      - $STACK_NAME.txt
  
     when: always
     expire_in: 1 day                                         # and set the variable produced in script to `environment:url`
