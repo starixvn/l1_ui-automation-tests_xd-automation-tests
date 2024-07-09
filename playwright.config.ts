@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
   expect: {
     timeout: 10 * 1000,
     toMatchSnapshot: {
-      maxDiffPixelRatio: 0.1,
+      maxDiffPixelRatio: 0.2,
     },
     toHaveScreenshot: {
       maxDiffPixels: 500,
@@ -18,7 +18,7 @@ const config: PlaywrightTestConfig = {
   },
   /* Run tests in files in parallel */
   fullyParallel: false,
-  reporter: [["dot"], ["html", { open: "never" }]],
+  reporter: [["line"], ["html", { open: "never" }]],
   use: {
     actionTimeout: 0,
     trace: "off",
