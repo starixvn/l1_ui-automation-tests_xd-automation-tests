@@ -39,18 +39,19 @@ smoketestxd:
     - auto-test-prod
   script:
     - cd /app/tests
-    - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME> $STACK_NAME.txt 2>&1
+    - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME
     - cp -r .. $CI_PROJECT_DIR
   after_script:
     - sleep 5
-    - if [ -f "test-results/Warning.txt" ]; then
-      echo "Warning.txt found"
-      export Warning=true
-    else
-      echo "Warning.txt not found"
-      export Warning=false
-    fi    
-    - echo $WARNING
+    - |
+      if [ -f "test-results/Warning.txt" ]; then
+        echo "Warning.txt found"
+        export Warning=true
+      else
+        echo "Warning.txt not found"
+        export Warning=false
+      fi
+    - echo $Warning
   retry: 1
   rules:
     - if: $TRIGGER == "true" && $MODE == "SMOKEXD"
