@@ -18,7 +18,7 @@ const config: PlaywrightTestConfig = {
   },
   /* Run tests in files in parallel */
   fullyParallel: false,
-  reporter: [["line"], ["html"],["allure-playwright"]],
+  reporter: [["line"],["allure-playwright"]],
   use: {
     actionTimeout: 0,
     trace: "off",

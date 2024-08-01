@@ -13,7 +13,7 @@ class BacNumbersSmokeSpec extends SmokeBases.NumberGameBase {
       locators: BacNumbersLocators,
       waitBetTimeout: 1000,
       snapshotFolderPath: __filename,
-      placeBetAmount: 10
+      placeBetAmount: 1
     };
     super(smokeOptions);
   }
