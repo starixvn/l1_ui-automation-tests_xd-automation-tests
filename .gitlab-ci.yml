@@ -4,7 +4,6 @@ variables:
 stages:
   - build
   - test
-  - report
 
 docker-build:
   image: hub.lumigame.com/base/docker:20.10.7
@@ -41,19 +40,11 @@ smoketestxd:
   script:
     - cd /app/tests
     - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME
+    - apt-get update && apt-get install -y zip curl  # Install necessary tools
+    - zip -r allure-results.zip allure-results  # Zip the results directory
+    - curl -X POST -F allureResults=@allure-results.zip http://10.70.70.120:8080/api/result # Replace with your Allure server URL  
     - cp -r .. $CI_PROJECT_DIR
-  after_script:
-    - sleep 5
-    - |
-      if [ -f "test-results/Warning.txt" ]; then
-        echo "Warning.txt found"
-        export Warning=true
-      else
-        echo "Warning.txt not found"
-        export Warning=false
-      fi
-    - echo $Warning
-  retry: 1
+  retry: 0
   rules:
     - if: $TRIGGER == "true" && $MODE == "SMOKEXD"
       when: always
@@ -61,15 +52,6 @@ smoketestxd:
 
   artifacts:
     paths:
-      - playwright-report
-      - screenshots
-      - test-results
       - allure-results
     when: always
     expire_in: 1 day                                         # and set the variable produced in script to `environment:url`
-
-report:
-  stage: report
-  script:
-    - chmod +x upload_results.sh
-    - ./upload_results.sh
