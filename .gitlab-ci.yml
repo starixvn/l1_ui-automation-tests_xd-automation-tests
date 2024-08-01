@@ -44,7 +44,10 @@ smoketestxd:
     - cd /app/
     - ls
     - zip -r allure-results.zip allure-results  # Zip the results directory
-    - curl -X POST -F allureResults=@allure-results.zip http://10.70.70.120:8080/api/result # Replace with your Allure server URL  
+    - curl -X POST 'http://10.70.70.120:8080/api/result' \   # Replace with your Allure server URL
+          -H "accept: */*" \
+          -H "Content-Type: multipart/form-data" \
+          -F "allureResults=@allure-results.zip;type=application/x-zip-compressed"
     - cp -r .. $CI_PROJECT_DIR
 
   retry: 0
