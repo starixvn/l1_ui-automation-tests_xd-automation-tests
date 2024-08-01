@@ -4,7 +4,6 @@ export const BacNumbersLocators = {
   lobbyStatistic: "//*[@id='icon-bacball1']/div/div[2]/div[2]",
   inGameUI: [
     "#img-game-name",
-    "#icon-home",
     "#icon-menu",
   ],
   inGameUIAndroid: {
