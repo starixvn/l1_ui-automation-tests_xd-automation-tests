@@ -38,7 +38,7 @@ smoketestxd:
   tags:
     - auto-test-prod
   script:
-    - ping -c 10.70.70.120
+    - curl -sSf http://10.70.70.120 || exit 1
     - cd /app/tests
     - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME
     - apt-get update && apt-get install -y zip curl  # Install necessary tools
