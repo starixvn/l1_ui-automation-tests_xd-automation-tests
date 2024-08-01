@@ -41,11 +41,11 @@ smoketestxd:
     - cd /app/tests
     - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME
     - apt-get update && apt-get install -y zip curl  # Install necessary tools
+    - cd /app/
     - ls
-    - cp -r .. $CI_PROJECT_DIR
-    - ls 
     - zip -r allure-results.zip allure-results  # Zip the results directory
     - curl -X POST -F allureResults=@allure-results.zip http://10.70.70.120:8080/api/result # Replace with your Allure server URL  
+    - cp -r .. $CI_PROJECT_DIR
 
   retry: 0
   rules:
