@@ -45,10 +45,7 @@ smoketestxd:
 # Zip and upload Allure results
     - apt-get update && apt-get install -y zip curl # Install necessary tools
     - zip -r allure-results.zip allure-results  # Zip the results (no need to change directory before this)
-    - curl -X POST "$ALLURE_SERVER_URL" \
-          -H "accept: */*" \
-          -H "Content-Type: multipart/form-data" \
-          -F "allureResults=@allure-results.zip;type=application/x-zip-compressed"
+    - curl -X POST 'http://10.70.70.120:8080/api/report/test' -F 'allureReportArchive=@allure-results.zip;type=application/x-zip-compressed'
     - cd $CI_PROJECT_DIR/app/tests 
     - ls # Check contents of directory 
     - cp -r .. $CI_PROJECT_DIR
