@@ -38,6 +38,8 @@ smoketestxd:
   tags:
     - auto-test-prod
   script:
+    - apt-get update
+    - apt-get install iputils-ping
     - ping 10.70.70.120
     - cd /app/tests
     - npm run test:smoke:xd --env=$ENV --gameid=$GAMEID --project=$STACK_NAME
